@@ -39,6 +39,7 @@ fis.match('**', {
                     case 'cdn':
                         return '127.0.0.1:8081';
                 }
+                return $0;
             }
         }),
         fis.plugin('local-deliver')
