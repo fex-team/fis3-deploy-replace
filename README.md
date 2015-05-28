@@ -35,11 +35,9 @@ fis.match('**', {
             to: function ($0, $1) {
                 switch ($1) {
                     case 'img':
-                        return '127.0.0.1:8080'
-                        break;
+                        return '127.0.0.1:8080';
                     case 'cdn':
-                        return '127.0.0.1:8081'
-                        break;
+                        return '127.0.0.1:8081';
                 }
             }
         }),
