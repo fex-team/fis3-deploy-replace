@@ -46,3 +46,33 @@ fis.match('**', {
     ]
 });
 ```
+
+或者
+
+```js
+function replacer(opt) {
+    if (!Array.isArray(opt)) {
+        opt = [opt];
+    }
+    var r = [];
+    opt.forEach(function (raw) {
+        r.push(fis.plugin('replace', raw));
+    });
+    return r;
+};
+
+fis.match('*', {
+    deploy: replacer([
+        {
+            from: 'a',
+            to: 'b',
+        },
+        {
+            from: 'a0',
+            to: 'b0'
+        }
+    ]).concat(fis.plugin('local-deliver'));
+});
+```
+
+机智的你可能已经发现了点什么。我们配置了多个功能单一的 `fis.plugin('replace')`。
