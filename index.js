@@ -5,12 +5,13 @@
 'use strict';
 
 
-module.exports = function (options, modified, total, next) {
-  if (!options.from || !options.to) {
+module.exports = function(options, modified, total, next) {
+  if (!options.from || typeof options.to === 'undefined') {
     fis.log.error('Invalid, please set option: {from: `reg/string` to: `function/string` }');
   }
-  modified.forEach(function (file) {
-    if (file.isText() || typeof (file.getContent()) === 'string') {
+
+  modified.forEach(function(file) {
+    if (file.isText() || typeof(file.getContent()) === 'string') {
       var content = file.getContent();
 
       if (fis.util.is(options.from, 'String')) {
